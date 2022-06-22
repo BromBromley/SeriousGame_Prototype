@@ -8,6 +8,7 @@ public class IconsManager : MonoBehaviour
     [SerializeField] private GameObject icons2;
     [SerializeField] private GameObject icons3a;
     [SerializeField] private GameObject icons3b;
+    [SerializeField] private GameObject infoScreen;
 
     public void ObjectSelected()
     {
@@ -31,6 +32,7 @@ public class IconsManager : MonoBehaviour
     {
         icons3a.SetActive(false);
         icons3b.SetActive(false);
+        infoScreen.SetActive(false);
         iconCan.SetActive(true);
     }
 
@@ -39,5 +41,10 @@ public class IconsManager : MonoBehaviour
         icons3a.SetActive(false);
         icons3b.SetActive(false);
         icons2.SetActive(true);
+    }
+
+    public void OpenInfo()
+    {
+        infoScreen.SetActive(true);
     }
 }

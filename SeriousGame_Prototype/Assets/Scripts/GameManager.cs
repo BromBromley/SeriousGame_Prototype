@@ -6,28 +6,35 @@ public class GameManager : MonoBehaviour
 {
     private UIManager _uiManager;
     private IconsManager _iconsManager;
-    private clickableObject _clickableObject;
+    private clickableObjects _clickableObjects;
 
     public bool reuse;
     public bool trash;
+
+    public int score = 0;
+    public int counter = 10;
 
     void Start()
     {
         _uiManager = FindObjectOfType<UIManager>();
         _iconsManager = FindObjectOfType<IconsManager>();
-        _clickableObject = FindObjectOfType<clickableObject>();
+        _clickableObjects = FindObjectOfType<clickableObjects>();
+
+        counter = 10;
     }
 
     void Update()
     {
-        if (_clickableObject.selected == false)
+        Debug.Log("counter " + counter);
+        if (counter <= 0)
         {
-
+            _uiManager.ShowEndscreen();
+            Debug.Log("score " + score);
         }
 
-        if (_clickableObject.selected == true)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _iconsManager.ObjectSelected();
+            _uiManager.PauseGame();
         }
     }
 
