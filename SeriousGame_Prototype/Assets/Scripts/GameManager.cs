@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _score;
     private UIManager _uiManager;
     private IconsManager _iconsManager;
     private clickableObjects _clickableObjects;
@@ -25,11 +27,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("counter " + counter);
+        //Debug.Log("counter " + counter);
         if (counter <= 0)
         {
             _uiManager.ShowEndscreen();
-            Debug.Log("score " + score);
+            _score.text = score + " Punkte erreicht";
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _uiManager.StartingGame();
-        _iconsManager.ObjectCleared();
+        //_iconsManager.ObjectCleared();
     }
 
     public void QuitGame()
