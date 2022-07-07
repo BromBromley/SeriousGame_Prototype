@@ -4,115 +4,81 @@ using UnityEngine;
 
 public class CategoryManager : MonoBehaviour
 {
-    //attached to [clickableObjects]
+    // attached to [clickableObjects]
+    // this script manages which category was chosen
 
-    private clickableObjects _clickableObjects;
-    private GameManager _gameManager;
+    public bool choosingCategory;
+
+    public bool choseDonate = false;
+    public bool choseRepair = false;
+
+    public bool choseWertstoff = false;
+    public bool choseBio = false;
+    public bool chosePapier = false;
+    public bool choseRest = false;
+    
 
     void Start()
     {
-        _clickableObjects = FindObjectOfType<clickableObjects>();
-        _gameManager = FindObjectOfType<GameManager>();
+        choosingCategory = false;
+    }
+
+    void Update()
+    {
+        if (choosingCategory)
+        {
+            choseDonate = false;
+            choseRepair = false;
+            choseWertstoff = false;
+            choseBio = false;
+            chosePapier = false;
+            choseRest = false;
+        }
+    }
+
+    public void resetCategories()
+    {
+        choseDonate = false;
+        choseRepair = false;
+        choseWertstoff = false;
+        choseBio = false;
+        chosePapier = false;
+        choseRest = false;
     }
 
     public void ChoseDonate()
     {
-        if (_clickableObjects.bookSelected == true)
-        {
-            _gameManager.score++;
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
-
-        else 
-        {
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
+        choseDonate = true;
+        choosingCategory = false;
     }
 
     public void ChoseRepair()
     {
-        if (_clickableObjects.shoesSelected == true || _clickableObjects.socksSelected == true)
-        {
-            _gameManager.score += 2;
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
-        else if (_clickableObjects.frameSelected == true || _clickableObjects.teddySelected == true)
-        {
-            _gameManager.score++;
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
-        else 
-        {
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
+        choseRepair = true;
+        choosingCategory = false;
     }
 
     public void ChoseWertstoff()
     {
-        if (_clickableObjects.bagSelected == true)
-        {
-            _gameManager.score++;
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
-
-        else 
-        {
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
+        choseWertstoff = true;
+        choosingCategory = false;
     }
 
     public void ChoseBio()
     {
-        if (_clickableObjects.bananaSelected == true || _clickableObjects.plantSelected == true)
-        {
-            _gameManager.score++;
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
-
-        else 
-        {
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
+        choseBio = true;
+        choosingCategory = false;
     }
 
     public void ChosePapier()
     {
-        if (_clickableObjects.paperSelected == true)
-        {
-            _gameManager.score++;
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
-
-        else 
-        {
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
+        chosePapier = true;
+        choosingCategory = false;
     }
 
     public void ChoseRest()
     {
-        if (_clickableObjects.shoesSelected == true || _clickableObjects.socksSelected == true || _clickableObjects.paintSelected == true)
-        {
-            _gameManager.score++;
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
-
-        else 
-        {
-            _gameManager.counter--;
-            _clickableObjects.selected = false;
-        }
+        choseRest = true;
+        choosingCategory = false;
     }
 }

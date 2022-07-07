@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class IconsManager : MonoBehaviour
 {
+    // attached to 01_HUD
+    // this script manages the icons for the different categories of reuse and trash
+
     [SerializeField] private GameObject iconCan;
     [SerializeField] private GameObject icons2;
     [SerializeField] private GameObject icons3a;
@@ -30,6 +33,7 @@ public class IconsManager : MonoBehaviour
 
     public void ObjectCleared()
     {
+        icons2.SetActive(false);
         icons3a.SetActive(false);
         icons3b.SetActive(false);
         infoScreen.SetActive(false);
@@ -46,5 +50,9 @@ public class IconsManager : MonoBehaviour
     public void OpenInfo()
     {
         infoScreen.SetActive(true);
+        iconCan.SetActive(false);
+        icons2.SetActive(false);
+        icons3a.SetActive(false);
+        icons3b.SetActive(false);
     }
 }
